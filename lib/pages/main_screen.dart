@@ -19,7 +19,8 @@ class MainScreen extends StatelessWidget {
               child: Column(
                 children: [
                   Expanded(flex: 2, child:DashboardWidget()),
-                  Expanded(flex: 3, child: ExerciceList())
+                  //flex 10 sprawia że lista pokazuje się na górze
+                  Expanded(flex: 10, child: ExerciceList())
                 ],
               )
               ),
