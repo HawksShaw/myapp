@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import '../data/side_menu_data.dart';
 
 class SideMenu extends StatefulWidget {
-  const SideMenu({super.key});
+  final Function(int) checkItem;
+  final int selectedIndex;
 
+  const SideMenu({Key? key, required this.checkItem, required this.selectedIndex});
   @override
   State<SideMenu> createState() => _SideMenuState();
 }
@@ -24,21 +26,18 @@ class _SideMenuState extends State<SideMenu> {
   }
 
   Widget buildMenuEntry(SideMenuData data, int index) {
-    final isSelected = selectedIndex == index;
+    final isSelected = widget.selectedIndex == index;
 
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 5),
       decoration: BoxDecoration(
-        borderRadius: const BorderRadius.all(
-          Radius.circular(6.0),
-        ),
+        borderRadius: const BorderRadius.all(Radius.circular(6.0)),
         color: isSelected ? Colors.amber : Colors.transparent,
       ),
       child: InkWell(
-        onTap:
-            () => setState(() {
-              selectedIndex = index;
-            }),
+        onTap: () {
+          widget.checkItem(index);
+        },
         child: Row(
           children: [
             Padding(
