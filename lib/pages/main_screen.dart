@@ -1,34 +1,42 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/widgets/exercice_list.dart';
 import '../widgets/side_menu.dart';
-import '../widgets/dashboard_widget.dart';
-import '../widgets/dashboard_widget.dart';
+import '../widgets/homescreen_content.dart';
+import '../widgets/profile_screen_content.dart';
 
-class MainScreen extends StatelessWidget {
+class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
+
+  @override
+  State<MainScreen> createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
+  int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Row(
-          children: [
-            Expanded(flex: 2, child: SizedBox(child: SideMenu())),
-            Expanded(
-              flex: 7, 
-              child: Column(
-                children: [
-                  Expanded(flex: 2, child:DashboardWidget()),
-                  //flex 10 sprawia że lista pokazuje się na górze
-                  Expanded(flex: 10, child: ExerciceList())
-                ],
-              )
-              ),
-            
-            //Expanded(flex: 3, child: Container(color: Colors.green)),
-          ],
-        ),
+      appBar: AppBar(title: Text("Hi, I'm the Placeholder"), centerTitle: true),
+      drawer: SideMenu(
+        selectedIndex: _selectedIndex,
+        checkItem: (index) {
+          setState(() {
+            _selectedIndex = index;
+          });
+        },
       ),
+      body: SafeArea(child: _buildBody()),
     );
+  }
+
+  Widget _buildBody() {
+    switch (_selectedIndex) {
+      case 0:
+        return HomeScreenContent();
+      case 1:
+        return ProfilePageContent();
+      default:
+        return HomeScreenContent();
+    }
   }
 }
