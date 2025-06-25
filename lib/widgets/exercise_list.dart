@@ -9,19 +9,19 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: ExerciceList(),
+      home: ExerciseList(),
     );
   }
 }
 
-class ExerciceList extends StatefulWidget {
-  const ExerciceList({super.key});
+class ExerciseList extends StatefulWidget {
+  const ExerciseList({super.key});
 
   @override
-  State<ExerciceList> createState() => _ExerciceListState();
+  State<ExerciseList> createState() => _ExerciseListState();
 }
 
-class _ExerciceListState extends State<ExerciceList> {
+class _ExerciseListState extends State<ExerciseList> {
   
   final List<Map<String, dynamic>> _items = [
     // {'icon': Icons.map, 'text': 'Map'},
@@ -41,12 +41,23 @@ class _ExerciceListState extends State<ExerciceList> {
         content: TextField(
           controller: _textController,
           autofocus: true,
-          decoration: const InputDecoration(hintText: 'Exercise name'),
+          decoration: const InputDecoration(
+            hintText: 'Exercise name',
+            focusedBorder: UnderlineInputBorder(
+              borderSide: BorderSide(color: Colors.amber),
+            ),
+            enabledBorder: UnderlineInputBorder(
+              borderSide: BorderSide(color: Colors.grey),
+            ),
+          ),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Cancel'),
+            child: const Text(
+              'Cancel',
+              style: TextStyle(color: Colors.amber),
+            ),
           ),
           ElevatedButton(
             onPressed: () {
@@ -60,7 +71,10 @@ class _ExerciceListState extends State<ExerciceList> {
                 Navigator.pop(context);
               }
             },
-            child: const Text('Add'),
+            child: const Text(
+              'Add',
+              style: TextStyle(color: Colors.amber),
+            ),
           ),
         ],
       ),
@@ -76,7 +90,10 @@ class _ExerciceListState extends State<ExerciceList> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Cancel'),
+            child: const Text(
+              'Cancel',
+              style: TextStyle(color: Colors.amber),
+            ),
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
@@ -84,7 +101,10 @@ class _ExerciceListState extends State<ExerciceList> {
               setState(() => _items.removeAt(index));
               Navigator.pop(context);
             },
-            child: const Text('Delete'),
+            child: const Text(
+              'Delete',
+              style: TextStyle(color: Colors.black),
+            ),
           ),
         ],
       ),
@@ -131,8 +151,10 @@ class _ExerciceListState extends State<ExerciceList> {
         },
       ),
       floatingActionButton: FloatingActionButton(
+        shape: CircleBorder(),
+        backgroundColor: Colors.amber,
         onPressed: _showAddItemDialog,
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.add, color: Colors.black, size: 32.0),
       ),
     );
   }
