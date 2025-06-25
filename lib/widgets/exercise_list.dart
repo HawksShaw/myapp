@@ -56,7 +56,7 @@ class _ExerciseListState extends State<ExerciseList> {
             onPressed: () => Navigator.pop(context),
             child: const Text(
               'Cancel',
-              style: TextStyle(color: Colors.amber),
+              style: TextStyle(color: Colors.grey),
             ),
           ),
           ElevatedButton(
@@ -85,14 +85,14 @@ class _ExerciseListState extends State<ExerciseList> {
     showDialog(
       context: context,
       builder: (_) => AlertDialog(
-        title: const Text('Confirm delete'),
+        title: const Text('Confirm deletion'),
         content: const Text('Are you sure you want to delete this exercise?'),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
             child: const Text(
               'Cancel',
-              style: TextStyle(color: Colors.amber),
+              style: TextStyle(color: Colors.grey),
             ),
           ),
           ElevatedButton(

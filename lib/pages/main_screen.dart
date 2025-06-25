@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../widgets/side_menu.dart';
 import 'homescreen_content.dart';
-// import '../widgets/profile_screen_content.dart';
+import 'profilescreen_content.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -16,7 +16,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Hi, I'm the Placeholder"), centerTitle: true),
+      appBar: AppBar(title: Text("Exercise App [PLACEHOLDER TITLE]"), centerTitle: true),
       drawer: SideMenu(
         selectedIndex: _selectedIndex,
         checkItem: (index) {
@@ -33,8 +33,8 @@ class _MainScreenState extends State<MainScreen> {
     switch (_selectedIndex) {
       case 0:
         return HomeScreenContent();
-      // case 1:
-      //   return ProfilePageContent();
+      case 1:
+        return ProfilePageContent();
       default:
         return HomeScreenContent();
     }

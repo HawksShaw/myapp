@@ -31,26 +31,50 @@ class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
     showDialog(
       context: context,
       builder: (_) => AlertDialog(
-        title: const Text('Dodaj serię'),
+        title: const Text(
+          'Add a set',
+          style: TextStyle(color: Colors.amber),
+          ),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             TextField(
               controller: repsController,
               keyboardType: TextInputType.number,
-              decoration: const InputDecoration(labelText: 'Powtórzenia'),
+              decoration: const InputDecoration(
+                labelText: 'Number of reps',
+                labelStyle: TextStyle(color: Colors.grey),
+                enabledBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Colors.grey),
+                ),
+                focusedBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Colors.amber),
+                ),
+              ),
             ),
             TextField(
               controller: weightController,
               keyboardType: TextInputType.number,
-              decoration: const InputDecoration(labelText: 'Ciężar (kg)'),
+              decoration: const InputDecoration(
+                labelText: 'Weight [kg]',
+                labelStyle: TextStyle(color: Colors.grey),
+                enabledBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Colors.grey),
+                ),
+                focusedBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Colors.amber),
+                ),
+              ),
             ),
           ],
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Anuluj'),
+            child: const Text(
+              'Cancel',
+              style: TextStyle(color: Colors.amber),
+            ),
           ),
           ElevatedButton(
             onPressed: () {
@@ -63,7 +87,10 @@ class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
                 Navigator.pop(context);
               }
             },
-            child: const Text('Dodaj'),
+            child: const Text(
+              'Add',
+              style: TextStyle(color: Colors.amber),
+            ),
           ),
         ],
       ),
@@ -78,26 +105,50 @@ class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
     showDialog(
       context: context,
       builder: (_) => AlertDialog(
-        title: const Text('Edytuj serię'),
+        title: const Text(
+          'Edit set',
+          style: TextStyle(color: Colors.amber),
+        ),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             TextField(
               controller: repsController,
               keyboardType: TextInputType.number,
-              decoration: const InputDecoration(labelText: 'Powtórzenia'),
+              decoration: const InputDecoration(
+                labelText: 'Number of reps',
+                labelStyle: TextStyle(color: Colors.grey),
+                enabledBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Colors.grey),
+                ),
+                focusedBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Colors.amber),
+                ),
+              ),
             ),
             TextField(
               controller: weightController,
               keyboardType: TextInputType.number,
-              decoration: const InputDecoration(labelText: 'Ciężar (kg)'),
+              decoration: const InputDecoration(
+                labelText: 'Weight [kg]',
+                labelStyle: TextStyle(color: Colors.grey),
+                enabledBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Colors.grey),
+                ),
+                focusedBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Colors.amber),
+                ),
+              ),
             ),
           ],
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Anuluj'),
+            child: const Text(
+              'Cancel',
+              style: TextStyle(color: Colors.grey),
+            ),
           ),
           ElevatedButton(
             onPressed: () {
@@ -110,7 +161,10 @@ class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
                 Navigator.pop(context);
               }
             },
-            child: const Text('Zapisz'),
+            child: const Text(
+              'Save',
+              style: TextStyle(color: Colors.amber),
+            ),
           ),
         ],
       ),
@@ -121,12 +175,15 @@ class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
     showDialog(
       context: context,
       builder: (_) => AlertDialog(
-        title: const Text('Potwierdź usunięcie'),
-        content: const Text('Czy na pewno chcesz usunąć tę serię?'),
+        title: const Text('Confirm deletion'),
+        content: const Text('Are you sure you want to delete this set?'),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Anuluj'),
+            child: const Text(
+              'Cancel',
+              style: TextStyle(color: Colors.grey),
+            ),
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
@@ -134,7 +191,10 @@ class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
               setState(() => _history.removeAt(index));
               Navigator.pop(context);
             },
-            child: const Text('Usuń'),
+            child: const Text(
+              'Delete',
+              style: TextStyle(color: Colors.black),
+            ),
           ),
         ],
       ),
@@ -151,7 +211,7 @@ class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
     return Scaffold(
       appBar: AppBar(title: Text(widget.exerciseName)),
       body: _history.isEmpty
-          ? const Center(child: Text('Brak zapisanych serii'))
+          ? const Center(child: Text('No sets saved'))
           : ListView.builder(
               itemCount: _history.length,
               itemBuilder: (_, index) {
@@ -179,8 +239,13 @@ class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
               },
             ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.amber,
         onPressed: _addSet,
-        child: const Icon(Icons.add),
+        child: const Icon(
+          Icons.add,
+          color: Colors.black,
+          size: 32.0,
+        ),
       ),
     );
   }
