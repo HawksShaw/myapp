@@ -150,8 +150,10 @@ class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
               ElevatedButton(
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
                 onPressed: () {
-                  widget.exercise.sets.removeAt(index);
-                  Navigator.pop(context);
+                  setState(() {
+                   widget.exercise.sets.removeAt(index);
+                });
+                Navigator.pop(context);
                 },
                 child: const Text('Usuń'),
               ),

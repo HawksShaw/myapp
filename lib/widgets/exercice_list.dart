@@ -100,7 +100,7 @@ class _ExerciceListState extends State<ExerciceList> {
                     _exercises.removeAt(index);
                     saveExercises(_exercises);
                   });
-                  
+                  Navigator.pop(context);
                 },
                 child: const Text('Usuń'),
               ),
