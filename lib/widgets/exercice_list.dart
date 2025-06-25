@@ -37,16 +37,16 @@ class _ExerciceListState extends State<ExerciceList> {
     showDialog(
       context: context,
       builder: (_) => AlertDialog(
-        title: const Text('Dodaj nowe ćwiczenie'),
+        title: const Text('Add a new exercise'),
         content: TextField(
           controller: _textController,
           autofocus: true,
-          decoration: const InputDecoration(hintText: 'Nazwa ćwiczenia'),
+          decoration: const InputDecoration(hintText: 'Exercise name'),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Anuluj'),
+            child: const Text('Cancel'),
           ),
           ElevatedButton(
             onPressed: () {
@@ -60,7 +60,7 @@ class _ExerciceListState extends State<ExerciceList> {
                 Navigator.pop(context);
               }
             },
-            child: const Text('Dodaj'),
+            child: const Text('Add'),
           ),
         ],
       ),
@@ -71,12 +71,12 @@ class _ExerciceListState extends State<ExerciceList> {
     showDialog(
       context: context,
       builder: (_) => AlertDialog(
-        title: const Text('Potwierdź usunięcie'),
-        content: const Text('Czy na pewno chcesz usunąć to ćwiczenie?'),
+        title: const Text('Confirm delete'),
+        content: const Text('Are you sure you want to delete this exercise?'),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Anuluj'),
+            child: const Text('Cancel'),
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
@@ -84,7 +84,7 @@ class _ExerciceListState extends State<ExerciceList> {
               setState(() => _items.removeAt(index));
               Navigator.pop(context);
             },
-            child: const Text('Usuń'),
+            child: const Text('Delete'),
           ),
         ],
       ),
